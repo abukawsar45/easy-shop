@@ -1,22 +1,14 @@
-'use client';
-
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import NavLink from './NavLink';
-import { afterLoginNavData, beforeLoginNavData } from '@/data/navData';
 
-const Navbar = () => {
-  const user = null;
-  const navData = user ? afterLoginNavData : beforeLoginNavData;
+const test = () => {
   return (
-    <nav className='navbar sticky top-0 z-10 bg-slate-200 shadow-lg dark:bg-slate-900 lg:pr-3 '>
+        <nav className='navbar sticky top-0 z-10 bg-slate-200 shadow-lg dark:bg-slate-900 lg:pr-3 '>
       <div className='flex-1'>
         <Link href='/' className='btn-ghost btn text-2xl normal-case'>
           Easy Shop
         </Link>
       </div>
-      <div className='  '>
+      <div className='absolute left-0 top-[4.5rem] flex w-full flex-col lg:flex-row bg-slate-200 pb-3 pt-2  '>
         <ul className='menu menu-horizontal flex-col lg:flex-row px-1'>
           {navData.map(({ path, title }) => (
             <li key={path} className='mx-auto'>
@@ -160,4 +152,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default test;
