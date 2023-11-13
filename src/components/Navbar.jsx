@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NavLink from './NavLink';
@@ -11,6 +11,9 @@ const Navbar = () => {
   const user = null;
   const navData = user ? afterLoginNavData : beforeLoginNavData;
   const { theme, toggleTheme } = useTheme();
+  const [ navToggle, setNavToggle] = useState(false);
+  console.log(navToggle);
+  
   
   return (
     <nav className='navbar sticky top-0 z-10 bg-slate-200 shadow-lg dark:bg-slate-900 lg:pr-3 '>
@@ -19,7 +22,11 @@ const Navbar = () => {
           Easy Shop
         </Link>
       </div>
-      <div className='  '>
+      <div
+        className={`absolute ${
+          navToggle ? 'left-0' : 'left-[-120%]'
+        } top-[4.5rem] flex w-full flex-col bg-slate-200 pb-3 pt-2 transition-all duration-300 dark:bg-slate-900 lg:static lg:w-[unset] lg:flex-row lg:bg-transparent lg:pb-0 lg:pt-0 dark:lg:bg-transparent`}
+      >
         <ul className='menu menu-horizontal flex-col lg:flex-row px-1'>
           {navData.map(({ path, title }) => (
             <li key={path} className='mx-auto'>
@@ -136,8 +143,8 @@ const Navbar = () => {
 
       <label className='swap-rotate swap btn-ghost btn-circle btn ml-2 bg-white dark:bg-slate-800 lg:hidden'>
         <input
-          // checked={navToggle}
-          // onChange={() => setNavToggle((pre) => !pre)}
+          checked={navToggle}
+          onChange={() => setNavToggle(!navToggle)}
           type='checkbox'
         />
         <svg
