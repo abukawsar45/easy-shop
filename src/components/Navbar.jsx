@@ -30,7 +30,12 @@ const Navbar = () => {
         <ul className='menu menu-horizontal flex-col lg:flex-row px-1'>
           {navData.map(({ path, title }) => (
             <li key={path} className='mx-auto'>
-              <NavLink href={path} activeClassName='text-blue-500'>
+              <NavLink
+                onClick={() => setNavToggle(false)}
+                href={path}
+                activeClassName='text-blue-500'
+                exact={path==="/"}
+              >
                 {title}
               </NavLink>
             </li>
