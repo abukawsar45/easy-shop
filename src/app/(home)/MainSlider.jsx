@@ -9,11 +9,17 @@ import Image from 'next/image';
 const MainSlider = () => {
   return (
     <section className='main-slider'>
-      <Carousel
-        showArrows={true}
-      >
+      <Carousel showArrows={true}>
         {mainSlider.map((item) => (
-          <SingleMainSlider key={item.id} slider={item} />
+          // <SingleMainSlider key={item.id} slider={item} />
+          <div
+            style={{
+              backgroundImage: `url(${item?.bg})`,
+            }}
+            className='image-layer'
+            key={item.id}
+            
+          ></div>
         ))}
       </Carousel>
     </section>
