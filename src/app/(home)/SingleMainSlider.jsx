@@ -6,11 +6,11 @@ const SingleMainSlider = ({ slider = {} }) => {
   const { bg, title } = slider;
 
   return (
-    <div className='carousel-container'>
+    <div className=''>
       <Image
         width={400}
         height={200}
-        className='banner-slide'
+        className=''
         src={bg}
         alt={bg}
       />

@@ -1,10 +1,11 @@
 import { Inter } from 'next/font/google';
 import { Roboto } from 'next/font/google';
-import './globals.css';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import classNames from '@/utils/classNames';
 import Providers from '@/providers';
+import './globals.css';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -32,15 +33,15 @@ const RootLayout = ({ children }) => {
         )}
       >
         <Providers>
-
-        <div className='flex min-h-screen flex-col justify-between'>
-          <div>
-            <Navbar />
-            <main className='mt-5'>{children}</main>
+          <div className='flex min-h-screen flex-col justify-between'>
+            <div>
+              <Navbar />
+              <main className='mt-5'>{children}</main>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
         </Providers>
+        <Toaster />
       </body>
     </html>
   );

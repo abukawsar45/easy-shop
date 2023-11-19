@@ -6,13 +6,19 @@ import Link from 'next/link';
 import NavLink from './NavLink';
 import { afterLoginNavData, beforeLoginNavData } from '@/data/navData';
 import useTheme from '@/hooks/useTheme'
+import useAuth from '@/hooks/useAuth';
 
 const Navbar = () => {
-  const user = null;
-  const navData = user ? afterLoginNavData : beforeLoginNavData;
+  const {user, logout} = useAuth();
+  const { uid, displayName, photoURL } = user || {};
+  const navData = uid ? afterLoginNavData : beforeLoginNavData;
   const { theme, toggleTheme } = useTheme();
   const [ navToggle, setNavToggle] = useState(false);
-  console.log(navToggle);
+  // console.log(navToggle);
+
+  const handleLogout =async () => {
+    await logout()
+  }
   
   
   return (
@@ -80,14 +86,14 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className='dropdown-end dropdown'>
+       {uid && <div className='dropdown-end dropdown'>
           <label tabIndex={0} className='btn-ghost btn-circle avatar btn'>
             <div className='w-10 rounded-full'>
               <Image
                 alt='user-logo'
-                // title={displayName}
+                title={displayName}
                 src={
-                  // photoURL ||
+                  photoURL ||
                   'https://i.ibb.co/0QZCv5C/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png'
                 }
                 width={40}
@@ -101,7 +107,7 @@ const Navbar = () => {
             className='menu-compact dropdown-content menu rounded-box mt-3 w-52 bg-base-100 p-2 shadow'
           >
             <li className='mb-2 mt-1 text-center font-semibold'>
-              {/* {displayName} */}
+              {displayName}
             </li>
             <div className='divider my-0'></div>
             <li className='mb-2'>
@@ -115,14 +121,14 @@ const Navbar = () => {
             </li>
             <li className=''>
               <button
-                // onClick={handleLogout}
+                onClick={handleLogout}
                 className='btn-warning btn content-center text-white'
               >
                 Logout
               </button>
             </li>
           </ul>
-        </div>
+        </div>}
         <label className='swap swap-rotate lg:ml-2'>
           <input
             onChange={toggleTheme}

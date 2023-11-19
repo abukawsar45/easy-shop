@@ -1,16 +1,12 @@
 'use client'
 
-import React from 'react';
 import ThemeProvider from './ThemeProvider';
 import AuthProviders from './AuthProviders';
 
-const Providers = ({children}) => {
-  
+const Providers = ({ children }) => {
   return (
     <ThemeProvider>
-      <AuthProviders>
-      {children}
-      </AuthProviders>
+      <AuthProviders>{children}</AuthProviders>
     </ThemeProvider>
   );
 };

@@ -5,15 +5,14 @@ const useTheme = () => {
   const theme = useContext(ThemeContext);
   const isClient = typeof window !== 'undefined';
 
-  if (!isClient && !theme)
-  {
-    return {};
+  if (!isClient && !theme) {
+    return () => {};
   }
 
-
-  if(!theme)
-  {
-    throw new Error('You must wrap your application with ThemeProvider or use the useTheme');
+  if (!theme) {
+    throw new Error(
+      'You must wrap your application with ThemeProvider or use the useTheme'
+    );
   }
   return theme;
 };
