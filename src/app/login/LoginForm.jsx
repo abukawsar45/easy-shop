@@ -1,11 +1,13 @@
 'use client'
 
+import GoogleLogin from '@/components/GoogleLogin';
 import useAuth from '@/hooks/useAuth';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { FcGoogle } from "react-icons/fc";
 
 const LoginForm = () => {
 
@@ -22,63 +24,101 @@ const LoginForm = () => {
 
   const onSubmit =async (data) => {
     const { email, password } = data;
-    const toastId = toast.loading("Loading...")
+    const toastId = toast.loading("Loading...");
+    try {
+      const user = await signIn(email, password);
+      toast.dismiss(toastId);
+      toast.success("User logged in successfully");
+    } catch (error)
+    {
+      toast.dismiss(toastId)
+      toast.error(error.message || "User not logged in")
+    }
   }
+
+   const handleGoogleLogin = async () => {
+      const toastId = toast.loading('Loading...');
+      try {
+        const user = await googleLogin();
+        toast.dismiss(toastId);
+        toast.success('User logged in successfully');
+      } catch (error) {
+        toast.dismiss(toastId);
+        toast.error(error.message || 'User not logged in');
+      }
+    };
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='card-body' >      
-      <div className="form-control">
-        <label htmlFor="email" className='label label-text'>
+    <form onSubmit={handleSubmit(onSubmit)} className='card-body'>
+      <div className='form-control'>
+        <label htmlFor='email' className='label label-text'>
           Email
         </label>
         <input
-        type='email'
-        placeholder='email'
-        id='email'
-        name='email'
+          type='email'
+          placeholder='email'
+          id='email'
+          name='email'
           className='input input-bordered'
           autoComplete='email'
-          { ...register("email", {
-           required: true,
-           pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/
+          {...register('email', {
+            required: true,
+            pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/,
           })}
         />
-        { errors.email && (
-          <span className='text-red-500 text-base mt-3' >Please enter a valid email address.</span>
-        ) }
+        {errors.email && (
+          <span className='text-red-500 text-base mt-3'>
+            Please enter a valid email address.
+          </span>
+        )}
       </div>
-      <div className="form-control">
-        <label htmlFor="password" className='label label-text'>
+      <div className='form-control'>
+        <label htmlFor='password' className='label label-text'>
           Password
         </label>
         <input
-        type='password'
-        placeholder='password'
-        id='password'
-        name='password'
+          type='password'
+          placeholder='password'
+          id='password'
+          name='password'
           className='input input-bordered'
           autoComplete='password'
-          { ...register("password",  {
+          {...register('password', {
             required: true,
-            minLength: 8
+            minLength: 8,
           })}
         />
-        { errors.password && (
-          <span className='text-red-500 text-base mt-3' >Please enter a password.</span>
-        ) }
+        {errors.password && (
+          <span className='text-red-500 text-base mt-3'>
+            Please enter a password.
+          </span>
+        )}
         <label>
-          <a href="#" className='label-text-alt link link-hover' >Forget password?</a>
+          <Link href='#' className='label-text-alt link link-hover'>
+            Forget password?
+          </Link>
         </label>
       </div>
-      <p className='mt-3' >
-        Don&apos; t have an accoutn? 
-        <Link href='/signup'
+      <p className='mt-3'>
+        Don&apos; t have an accoutn?
+        <Link
+          href='/signup'
           className='text-blue-500 under
            underline ml-1'
-        >Signup</Link>
-
+        >
+          Signup
+        </Link>
       </p>
+      <div className='divider mt-5'>OR</div>
+      {/* <GoogleLogin from ={from}/> */}
+      <button
+        onClick={handleGoogleLogin}
+        type='button'
+        className='btn btn-primary mt-5 mx-auto'
+      >
+        <FcGoogle className='text-3xl mr-3' /> Continue with google
+      </button>
     </form>
   );
 };
