@@ -1,17 +1,16 @@
 import AuthContext from "@/contexts/AuthContext"
-import { useContext } from "react"
+import { useContext } from 'react';
 
-
-
-const useAuth = async () => {
+const useAuth = () => {
   const auth = useContext(AuthContext);
+  console.log({auth})
   const isClient = typeof window !== 'undefined';
 
   if (!isClient && !auth) return {};
 
   if (!auth) {
     throw new Error(
-      'you must wrap your application with AuthProvider to use the useAuth'
+      'You must wrap your application with AuthProvider ot use the useAuth'
     );
   }
   return auth;

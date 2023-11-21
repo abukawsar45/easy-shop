@@ -10,7 +10,7 @@ const SingleMainSlider = ({ slider = {} }) => {
       <Image
         width={400}
         height={200}
-        className=''
+        className='image-layer h-screen object-cover '
         src={bg}
         alt={bg}
       />

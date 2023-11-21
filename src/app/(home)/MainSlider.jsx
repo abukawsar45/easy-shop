@@ -17,14 +17,14 @@ const MainSlider = () => {
         interval={3000}
       >
         {mainSlider.map((item) => (
-          // <SingleMainSlider key={item.id} slider={item} />
-          <div
-            style={{
-              backgroundImage: `url(${item?.bg})`,
-            }}
-            className=''
-            key={item.id}
-          ></div>
+          <SingleMainSlider key={item.id} slider={item} />
+          // <div
+          //   style={{
+          //     backgroundImage: `url(${item?.bg})`,
+          //   }}
+          //   className=''
+          //   key={item.id}
+          // ></div>
         ))}
       </Carousel>
     </section>

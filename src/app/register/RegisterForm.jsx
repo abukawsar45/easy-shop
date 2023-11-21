@@ -1,7 +1,9 @@
 'use client'
 
+
 import useAuth from '@/hooks/useAuth';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
@@ -15,59 +17,81 @@ const RegisterForm = () => {
     setValue,
   } = useForm();
 
-  const { createUser, profileUpdate } = useAuth();
+  const ab = useAuth();
+  console.log({ab})
+  const {
+    createUser,
+    profileUpdate,
+    googleLogin
+  } = ab;
+  console.log({ createUser, profileUpdate, googleLogin });
   const search = useSearchParams();
   const from = search.get('redirectUrl') || '/';
   const { replace, refresh } = useRouter();
 
-  const uploadImage = async (event) => {
+ 
+  const uploadImage = async (e) => {
+    console.log(e)
     const formData = new FormData();
-    if (!event.target.files[0]) return;
-    formData.append('image', event.target.files[0]);
-    const toastId = toast.loading('Image uploading...');
+    console.log({formData})
+    if(!e.target.files[0]) return;
+    formData.append("image", e.target.files[0]);
+    console.log({formData})
+    const toastId = toast.loading("Image uploading...");
     try {
       const res = await fetch(
-        `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`,
+        // `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`,
+        `https://api.imgbb.com/1/upload?key=d587fe35facb984ebe5250193519c219`,
         {
           method: 'POST',
-          body: formData,
-        }
+          body: formData
+        },
       );
-      if (!res.ok) throw new Error('Failed to upload image');
-
+         if (!res.ok) throw new Error("Failed to updload image");
       const data = await res.json();
       toast.dismiss(toastId);
-      toast.success('Image uploaded successfully!');
+      toast.success('image uploaded succeessFully');
       setValue('photo', data.data.url);
     } catch (error) {
-      toast.error('Image not uploaded!');
-      toast.dismiss(toastId);
+      toast.error(error.message || 'Image not uplodaed')
+      toast.dismiss(toastId)
     }
-  };
+  }
 
   const onSubmit = async (data, event) => {
+    console.log({data})
     const { name, email, password, photo } = data;
     const toastId = toast.loading('Loading...');
     try {
       await createUser(email, password);
-      await createJWT({ email });
       await profileUpdate({
         displayName: name,
         photoURL: photo,
       });
-      startTransition(() => {
-        refresh();
-        replace(from);
-        toast.dismiss(toastId);
-        toast.success('User signed in successfully');
-      });
+      toast.dismiss(toastId)
+      toast.success('User sign up successfully')
+
     } catch (error) {
       toast.dismiss(toastId);
-      toast.error(error.message || 'User not signed in');
+      toast.error(error.message || 'User not signed up');
     }
   };
 
+  
+   const handleGoogleLogin = async () => {
+     const toastId = toast.loading('Loading...');
+     try {
+       const user = await googleLogin();
+       toast.dismiss(toastId);
+       toast.success('User logged in successfully');
+     } catch (error) {
+       toast.dismiss(toastId);
+       toast.error(error.message || 'User not logged in');
+     }
+   };
+  
   return (
+   
     <form onSubmit={handleSubmit(onSubmit)} className='card-body'>
       <div className='form-control'>
         <label htmlFor='name' className='label label-text'>
