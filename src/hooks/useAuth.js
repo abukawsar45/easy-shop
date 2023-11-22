@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 const useAuth = () => {
   const auth = useContext(AuthContext);
-  console.log({auth})
+  // console.log({auth})
   const isClient = typeof window !== 'undefined';
 
   if (!isClient && !auth) return {};

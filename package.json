@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "firebase": "^10.6.0",
+    "jose": "^5.1.1",
     "mongodb": "^6.2.0",
     "next": "14.0.2",
     "react": "^18",

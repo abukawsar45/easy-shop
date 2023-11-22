@@ -17,14 +17,8 @@ const RegisterForm = () => {
     setValue,
   } = useForm();
 
-  const ab = useAuth();
-  console.log({ab})
-  const {
-    createUser,
-    profileUpdate,
-    googleLogin
-  } = ab;
-  console.log({ createUser, profileUpdate, googleLogin });
+  const { createUser, profileUpdate, googleLogin } = useAuth();
+  console.log({ createUser });
   const search = useSearchParams();
   const from = search.get('redirectUrl') || '/';
   const { replace, refresh } = useRouter();

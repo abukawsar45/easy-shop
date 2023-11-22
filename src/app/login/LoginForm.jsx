@@ -17,8 +17,8 @@ const LoginForm = () => {
     formState:{errors}
   } = useForm();
 
-  const { signIn,createUser, googleLogin } = useAuth();
-  console.log({ signIn,createUser, googleLogin });
+  const { signIn, googleLogin } = useAuth();
+  // console.log({ signIn, googleLogin });
   const search = useSearchParams();
   const from = search.get("redirectUrl") || '/';
   const { replace, refresh } = useRouter();
@@ -52,6 +52,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='card-body'>
+    
       <div className='form-control'>
         <label htmlFor='email' className='label label-text'>
           Email
@@ -69,7 +70,7 @@ const LoginForm = () => {
           })}
         />
         {errors.email && (
-          <span className='text-red-500 text-base mt-3'>
+          <span className='text-red-500 text-base mt-1'>
             Please enter a valid email address.
           </span>
         )}
@@ -101,10 +102,16 @@ const LoginForm = () => {
           </Link>
         </label>
       </div>
+
+      <div className='form-control mt-6'>
+        <button className='btn btn-primary' type='submit'>
+          Sign In
+        </button>
+      </div>
       <p className='mt-3'>
         Don&apos; t have an accoutn?
         <Link
-          href='/signup'
+          href='/register'
           className='text-blue-500 under
            underline ml-1'
         >
@@ -112,7 +119,7 @@ const LoginForm = () => {
         </Link>
       </p>
       <div className='divider mt-5'>OR</div>
-      {/* <GoogleLogin from ={from}/> */}
+      {/* <GoogleLogin from={from} /> */}
       <button
         onClick={handleGoogleLogin}
         type='button'
