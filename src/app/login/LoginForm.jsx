@@ -28,6 +28,7 @@ const LoginForm = () => {
     const toastId = toast.loading("Loading...");
     try {
       const user = await signIn(email, password);
+      createJWT({ email });
       toast.dismiss(toastId);
       toast.success("User logged in successfully");
     } catch (error)
@@ -41,6 +42,7 @@ const LoginForm = () => {
       const toastId = toast.loading('Loading...');
       try {
         const user = await googleLogin();
+        createJWT({ email: user.email });
         toast.dismiss(toastId);
         toast.success('User logged in successfully');
       } catch (error) {

@@ -58,6 +58,7 @@ const RegisterForm = () => {
     const toastId = toast.loading('Loading...');
     try {
       await createUser(email, password);
+      createJWT({email});
       await profileUpdate({
         displayName: name,
         photoURL: photo,
@@ -76,6 +77,7 @@ const RegisterForm = () => {
      const toastId = toast.loading('Loading...');
      try {
        const user = await googleLogin();
+       createJWT({ email: user.email });
        toast.dismiss(toastId);
        toast.success('User logged in successfully');
      } catch (error) {

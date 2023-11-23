@@ -1,4 +1,6 @@
-import { Cookie } from "next/headers";
+import { cookies } from "next/headers";
+import { SignJWT } from 'jose';
+import { NextResponse } from 'next/server';
 
 
 export const POST = async (request) => {
@@ -8,18 +10,20 @@ export const POST = async (request) => {
   const alg = 'HS256';
   
 
-  const jwt = await new jose.SignJWT({ 'urn:example:claim': true })
+  const jwt = await new SignJWT(body)
     .setProtectedHeader({ alg })
     .setIssuedAt()
-    .setExpirationTime('2h')
+    .setExpirationTime('45d')
     .sign(secret);
 
   console.log(jwt);
 
-  cookies({
+  cookies().set({
     name: 'jwt-token',
     value: `bearer ${jwt}`,
     secure: true,
     httpOnly: true
-  })
+  });
+
+  return NextResponse.json({ message: 'Token created' });
 }
