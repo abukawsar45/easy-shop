@@ -20,7 +20,7 @@ export const POST = async (request) => {
 
   cookies().set({
     name: 'jwt-token',
-    value: `bearer ${jwt}`,
+    value: `Bearer ${jwt}`,
     secure: true,
     httpOnly: true
   });
