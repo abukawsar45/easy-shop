@@ -6,7 +6,7 @@ const createJWT =async (payload) => {
     const res = await fetch('/api/auth', {
       method: "POST",
       headers: {
-        'context-type': 'application/json'
+        'content-type': 'application/json'
       },
       body: JSON.stringify(payload),
 } );

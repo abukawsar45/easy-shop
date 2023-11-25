@@ -2,6 +2,7 @@
 
 import GoogleLogin from '@/components/GoogleLogin';
 import useAuth from '@/hooks/useAuth';
+import createJWT from '@/utils/createJWT';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -28,9 +29,10 @@ const LoginForm = () => {
     const toastId = toast.loading("Loading...");
     try {
       const user = await signIn(email, password);
-      createJWT({ email });
+      await createJWT({ email });
       toast.dismiss(toastId);
       toast.success("User logged in successfully");
+      replace(from)
     } catch (error)
     {
       toast.dismiss(toastId)
@@ -41,10 +43,11 @@ const LoginForm = () => {
    const handleGoogleLogin = async () => {
       const toastId = toast.loading('Loading...');
       try {
-        const user = await googleLogin();
-        createJWT({ email: user.email });
+        const {user} = await googleLogin();
+        await createJWT({ email: user.email });
         toast.dismiss(toastId);
         toast.success('User logged in successfully');
+        replace(from);
       } catch (error) {
         toast.dismiss(toastId);
         toast.error(error.message || 'User not logged in');
