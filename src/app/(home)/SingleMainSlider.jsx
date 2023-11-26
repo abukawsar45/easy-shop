@@ -2,7 +2,7 @@ import TextModifier from 'react-text-modifier';
 import Image from 'next/image';
 
 const SingleMainSlider = ({ slider = {} }) => {
-  console.log(slider);
+  // console.log(slider);
   const { bg, title } = slider;
 
   return (

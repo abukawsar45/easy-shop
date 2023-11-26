@@ -7,18 +7,34 @@ import NavLink from './NavLink';
 import { afterLoginNavData, beforeLoginNavData } from '@/data/navData';
 import useTheme from '@/hooks/useTheme'
 import useAuth from '@/hooks/useAuth';
+import toast from 'react-hot-toast';
+import { usePathname, useRouter } from 'next/navigation';
+
 
 const Navbar = () => {
   const {user, logout} = useAuth();
   const { uid, displayName, photoURL } = user || {};
   const navData = uid ? afterLoginNavData : beforeLoginNavData;
   const { theme, toggleTheme } = useTheme();
+  const {replace } = useRouter();
+  const path = usePathname();
   const [ navToggle, setNavToggle] = useState(false);
   // console.log(navToggle);
 
   const handleLogout =async () => {
-    await logout()
-  }
+    try {
+    await logout();
+    const res = await fetch('/api/auth/logout',{
+      method: 'POST'
+    } )
+      const data = await res.json();
+      toast.success('Successfully logout');
+    } catch (error)
+    {
+      toast.error('Logout not successfully')
+      
+    }
+  }   
   
   
   return (
