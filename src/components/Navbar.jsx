@@ -29,6 +29,10 @@ const Navbar = () => {
     } )
       const data = await res.json();
       toast.success('Successfully logout');
+      if (path.includes('/profile') || path.includes('/dashboard'))
+      {
+        replace('/');
+      }
     } catch (error)
     {
       toast.error('Logout not successfully')
