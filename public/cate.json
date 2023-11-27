@@ -1,0 +1,27 @@
+[
+  {
+    "name": "clothings",
+    "_id": "65642999592f467d47b2cc34dsf",
+    "imageUrl": "/products/airmax270_1.jpg"
+  },
+  {
+    "name": "Books",
+    "_id": "65642999592f467d47asdfb2cc34",
+    "imageUrl": "/products/davincicode_1.jpg"
+  },
+  {
+    "name": "Sports & Outdoors",
+    "_id": "65642999592f4dsaf67d47b2cc34",
+    "imageUrl": "/products/dumbbellset_1.jpg"
+  },
+  {
+    "name": "Electronics",
+    "_id": "65642999592f4dsaf67d47b2cc34",
+    "imageUrl": "/products/iphone13pro1.jpg"
+  },
+  {
+    "name": "Home & Kitchen",
+    "_id": "65642999592f467d47b2cc34",
+    "imageUrl": "/products/baristaexpress_1.jpg"
+  }
+]
