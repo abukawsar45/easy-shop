@@ -1,123 +1,197 @@
 [
   {
-    "name": "Shoes",
+    "title": "Nike latest",
+    "price": "2000",
     "imageUrl": "/products/airmax270_1.jpg"
   },
   {
-    "name": "Shoes",
+    "title": "Panda Kingdom",
+    "price": "5000",
     "imageUrl": "/products/airmax270_2.jpg"
   },
   {
-    "name": "Shoes",
+    "title": "Bata origin",
+    "price": "7000",
     "imageUrl": "/products/airmax270_3.jpg"
   },
   {
-    "name": "Books",
+    "title": "Humanity",
+    "price": "5000",
     "imageUrl": "/products/greatgatsby_1.jpg"
   },
   {
-    "name": "Books",
+    "title": "Best self",
+    "price": "2000",
     "imageUrl": "/products/greatgatsby_2.jpg"
   },
   {
-    "name": "Books",
+    "title": "Try for you",
+    "price": "6000",
     "imageUrl": "/products/greatgatsby_3.jpg"
   },
   {
-    "name": "Home & Kitchen",
+    "title": "Best coffee maker",
+    "price": "20000",
     "imageUrl": "/products/baristaexpress_1.jpg"
   },
   {
-    "name": "Home & Kitchen",
+    "title": "Best coffee maker v2",
+    "price": "32000",
     "imageUrl": "/products/baristaexpress_2.jpg"
   },
   {
-    "name": "Home & Kitchen",
+    "title": "Best coffee maker latest",
+    "price": "40000",
     "imageUrl": "/products/baristaexpress_3.jpg"
   },
   {
-    "name": "Movie",
+    "title": "Fire action movie",
+    "price": "100",
     "imageUrl": "/products/davincicode_1.jpg"
   },
   {
-    "name": "Movie",
+    "title": "Funny movie",
+    "price": "500",
     "imageUrl": "/products/davincicode_2.jpg"
   },
   {
-    "name": "Movie",
+    "title": "Emotional movie",
+    "price": "220",
     "imageUrl": "/products/davincicode_3.jpg"
   },
   {
-    "name": "Sports & Outdoors",
+    "title": "Sports purpose",
+    "price": "1200",
     "imageUrl": "/products/dumbbellset_1.jpg"
   },
   {
-    "name": "Sports & Outdoors",
+    "title": "Random use for this",
+    "price": "6000",
     "imageUrl": "/products/dumbbellset_2.jpg"
   },
   {
-    "name": "Sports & Outdoors",
+    "title": "Best physical purpose",
+    "price": "2500",
     "imageUrl": "/products/dumbbellset_3.jpg"
   },
   {
-    "name": "Camera",
+    "title": "Canon Camera",
+    "price": "20000",
     "imageUrl": "/products/eosr6_1.jpg"
   },
   {
-    "name": "Camera",
+    "title": "Sony Camera",
+    "price": "27000",
     "imageUrl": "/products/eosr6_2.jpg"
   },
   {
-    "name": "Camera",
+    "title": "Camera",
+    "price": "10200",
     "imageUrl": "/products/eosr6_3.jpg"
   },
   {
-    "name": "Electronics",
+    "title": "Samsung S21",
+    "price": "20000",
     "imageUrl": "/products/galaxys21_1.jpg"
   },
   {
-    "name": "Electronics",
+    "title": "Samsung S21 pro",
+    "price": "25000",
     "imageUrl": "/products/galaxys21_2.jpg"
   },
   {
-    "name": "Electronics",
+    "title": "Samsung S21 plus",
+    "price": "45000",
     "imageUrl": "/products/galaxys21_3.jpg"
   },
   {
-    "name": "Electronics",
+    "title": "Apple 13 pro",
+    "price": "120000",
     "imageUrl": "/products/iphone13pro1.jpg"
   },
   {
-    "name": "Electronics",
+    "title": "Apple 13 pro max",
+    "price": "137000",
     "imageUrl": "/products/iphone13pro2.jpg"
   },
   {
-    "name": "Electronics",
+    "title": "Apple 14",
+    "price": "160000",
     "imageUrl": "/products/iphone13pro3.jpg"
   },
   {
-    "name": "Cloths",
+    "title": "Jins pant",
+    "price": "1400",
     "imageUrl": "/products/levis501_1.jpg"
   },
   {
-    "name": "Cloths",
+    "title": "New pants",
+    "price": "2900",
     "imageUrl": "/products/levis501_2.jpg"
   },
   {
-    "name": "Cloths",
+    "title": "Super fashion",
+    "price": "2800",
     "imageUrl": "/products/levis501_3.jpg"
   },
   {
-    "name": "Gaming",
+    "title": "Sony Gaming playStation",
+    "price": "62000",
     "imageUrl": "/products/ps5_1.jpg"
   },
   {
-    "name": "Gaming",
+    "title": "Sony latest version gaming playStation",
+    "price": "72000",
     "imageUrl": "/products/ps5_2.jpg"
   },
   {
-    "name": "Gaming",
+    "title": "Sony old gaming playStation",
+    "price": "67000",
     "imageUrl": "/products/ps5_3.jpg"
   },
-
+  {
+    "title": "Supper fita",
+    "price": "700",
+    "imageUrl": "/products/resistancebands_1.jpg"
+  },
+  {
+    "title": "Supper fite latest",
+    "price": "500",
+    "imageUrl": "/products/resistancebands_2.jpg"
+  },
+  {
+    "title": "Supper fite",
+    "price": "550",
+    "imageUrl": "/products/resistancebands_3.jpg"
+  },
+  {
+    "title": "Family maker book",
+    "price": "450",
+    "imageUrl": "/products/tokillamockingbird_1.jpg"
+  },
+  {
+    "title": "Family maker book new version",
+    "price": "400",
+    "imageUrl": "/products/tokillamockingbird_2.jpg"
+  },
+  {
+    "title": "Supper family maker book ",
+    "price": "600",
+    "imageUrl": "/products/tokillamockingbird_3.jpg"
+  },
+  {
+    "title": "Latest mat",
+    "price": "350",
+    "imageUrl": "/products/yogamat_1.jpg"
+  },
+  {
+    "title": "Super rubber mat",
+    "price": "450",
+    "imageUrl": "/products/yogamat_2.jpg"
+  },
+  {
+    "title": "Simple mat",
+    "price": "570",
+    "imageUrl": "/products/yogamat_3.jpg"
+  }
 ]
